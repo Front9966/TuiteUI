@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tuite.Views"
+             x:Class="Tuite.Views.UserPage">
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid RowDefinitions="Auto,20,*">
+            <!--个人名片背景-->
+            <Image Source="{Binding UserInfos.UserBack}" Grid.Row="0" Grid.RowSpan="2" Aspect="AspectFill" HeightRequest="190"/>
+            <!--信息栏-->
+            <Border Grid.Row="1" Grid.RowSpan="2" Stroke="Transparent" BackgroundColor="white">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20,20,0,0"/>
+                </Border.StrokeShape>
+                <Grid RowDefinitions="Auto,Auto,Auto,*">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <!--用户头像-->
+                        <Image Source="{Binding UserInfos.UserImage}" HeightRequest="80" WidthRequest="80" HorizontalOptions="Start" Margin="20,20,0,0">
+                            <Image.Clip>
+                                <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
+                            </Image.Clip>
+                        </Image>
+                        <!--昵称和标签栏-->
+                        <VerticalStackLayout HeightRequest="80" Grid.Column="1" Margin="10,20,10,0">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding UserInfos.UserName}" FontFamily="DouyinSansBold" LineBreakMode="TailTruncation" HeightRequest="40" VerticalTextAlignment="Center" VerticalOptions="Center" FontSize="16"/>
+                                <Label Text="&#xe661;" x:Name="GenderView" FontFamily="iconfont1" LineBreakMode="TailTruncation" HeightRequest="40" VerticalTextAlignment="Center" VerticalOptions="Center" FontSize="16" Margin="10,0,0,0"/>
+                            </HorizontalStackLayout>
+                            <Label Text="{Binding UserInfos.UserSign}" TextColor="#AAA" FontFamily="DouyinSansBold" LineBreakMode="TailTruncation" HeightRequest="40" VerticalTextAlignment="Center" VerticalOptions="Center" FontSize="14"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                    <!--预留铭牌位置：1-->
+                    <!--标签分类-->
+                    <local:TextClassifyViewDome x:Name="textClassifyButton" Grid.Row="2"/>
+                    <ScrollView x:Name="ScrollView1" VerticalScrollBarVisibility="Never" Grid.Row="3" Margin="0,10">
+                        <VerticalStackLayout x:Name="VerView">
+                            <!--详细资料-->
+                            <VerticalStackLayout x:Name="UserInfoViews" Margin="35,10,10,10">
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <Label Text="AppID" TextColor="#8F908F" FontFamily="DouyinSansBold" FontSize="16"/>
+                                    <Label Text="{Binding UserInfos.UserID}" LineBreakMode="TailTruncation" TextColor="#AEB1AE" Grid.Column="1" Margin="25,0,0,0" FontFamily="DouyinSansBold" FontSize="16"/>
+                                </Grid>
+                                <Grid ColumnDefinitions="Auto,*" Margin="0,10,0,0">
+                                    <Label Text="用户粉丝" TextColor="#8F908F" FontFamily="DouyinSansBold" FontSize="16"/>
+                                    <Label Text="{Binding UserInfos.UserFenSi}" LineBreakMode="TailTruncation" TextColor="#AEB1AE" Grid.Column="1" Margin="25,0,0,0" FontFamily="DouyinSansBold" FontSize="16"/>
+                                </Grid>
+                                <Grid ColumnDefinitions="Auto,*" Margin="0,10,0,0">
+                                    <Label Text="用户关注" TextColor="#8F908F" FontFamily="DouyinSansBold" FontSize="16"/>
+                                    <Label Text="{Binding UserInfos.UserGuanZhu}" LineBreakMode="TailTruncation" TextColor="#AEB1AE" Grid.Column="1" Margin="25,0,0,0" FontFamily="DouyinSansBold" FontSize="16"/>
+                                </Grid>
+                                <Grid ColumnDefinitions="Auto,*" Margin="0,10,0,0">
+                                    <Label Text="用户等级" TextColor="#8F908F" FontFamily="DouyinSansBold" FontSize="16"/>
+                                    <Label Text="{Binding UserInfos.UserGrade}" LineBreakMode="TailTruncation" TextColor="#AEB1AE" Grid.Column="1" Margin="25,0,0,0" FontFamily="DouyinSansBold" FontSize="16"/>
+                                </Grid>
+                                <Grid ColumnDefinitions="Auto,*" Margin="0,10,0,0">
+                                    <Label Text="他的年龄" TextColor="#8F908F" FontFamily="DouyinSansBold" FontSize="16"/>
+                                    <Label Text="{Binding UserInfos.UserAge}" LineBreakMode="TailTruncation" TextColor="#AEB1AE" Grid.Column="1" Margin="25,0,0,0" FontFamily="DouyinSansBold" FontSize="16"/>
+                                </Grid>
+                                <Grid ColumnDefinitions="Auto,*" Margin="0,10,0,0">
+                                    <Label Text="注册时间" TextColor="#8F908F" FontFamily="DouyinSansBold" FontSize="16"/>
+                                    <Label Text="{Binding UserInfos.UserZhuCeTime}" LineBreakMode="TailTruncation" TextColor="#AEB1AE" Grid.Column="1" Margin="25,0,0,0" FontFamily="DouyinSansBold" FontSize="16"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </ScrollView>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>

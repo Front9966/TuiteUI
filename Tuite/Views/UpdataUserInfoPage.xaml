@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.UpdataUserInfoPage"
+             Title="修改资料">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*">
+        <Image Source="test.jpg" Grid.Row="0" Aspect="AspectFill" HeightRequest="190"/>
+        <Image Source="test2.jpg" Grid.Row="0" Aspect="AspectFill" HeightRequest="70" WidthRequest="70">
+            <Image.Clip>
+                <EllipseGeometry Center="35,35" RadiusX="35" RadiusY="35"/>
+            </Image.Clip>
+        </Image>
+        <Line Grid.Row="1" X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="5"/>
+        <Grid Margin="15,3" Grid.Row="2" ColumnDefinitions="Auto,*,50">
+            <Label Text="昵称" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#000000" FontFamily="DouyinSansBold"/>
+            <Entry Grid.Column="1" Text="酷酷的小贤佬" MaxLength="8" IsEnabled="False" Margin="10,0" FontFamily="DouyinSansBold" Background="Transparent" BackgroundColor="Transparent" />
+            <Label Grid.Column="2" Text="点击修改" FontSize="12" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#AAA" FontFamily="DouyinSansBold"/>
+        </Grid>
+        <Grid Margin="15,3" Grid.Row="3" ColumnDefinitions="Auto,*">
+            <Label Text="签名" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#000000" FontFamily="DouyinSansBold"/>
+            <Entry Grid.Column="1" Text="这是一个非常个性的个性签名......" MaxLength="60" Margin="10,0" FontFamily="DouyinSansBold" Background="Transparent" BackgroundColor="Transparent" />
+        </Grid>
+        <Grid Margin="15,3" Grid.Row="4" ColumnDefinitions="Auto,*,30">
+            <Label Text="性别" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#000000" FontFamily="DouyinSansBold"/>
+            <Entry Grid.Column="1" Text="男" MaxLength="8" IsEnabled="False" Margin="10,0" FontFamily="DouyinSansBold" Background="Transparent" BackgroundColor="Transparent" />
+            <Label Grid.Column="2" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" VerticalOptions="Center" TextColor="#AAA" FontSize="18"/>
+        </Grid>
+        <Grid Margin="15,3" Grid.Row="5" ColumnDefinitions="Auto,*,30">
+            <Label Text="年龄" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#000000" FontFamily="DouyinSansBold"/>
+            <Entry Grid.Column="1" Text="18" Keyboard="Numeric" IsEnabled="False" MaxLength="2" Margin="10,0" FontFamily="DouyinSansBold" Background="Transparent" BackgroundColor="Transparent" />
+            <Label Grid.Column="2" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" VerticalOptions="Center" TextColor="#AAA" FontSize="18"/>
+        </Grid>
+        <Grid Margin="15,3" Grid.Row="6" ColumnDefinitions="Auto,*,30">
+            <Label Text="城市" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#000000" FontFamily="DouyinSansBold"/>
+            <Entry Grid.Column="1" Text="中国贵州省贵阳市" IsEnabled="False" Margin="10,0" FontFamily="DouyinSansBold" Background="Transparent" BackgroundColor="Transparent" />
+            <Label Grid.Column="2" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" VerticalOptions="Center" TextColor="#AAA" FontSize="18"/>
+        </Grid>
+        <Grid Margin="15,3" Grid.Row="7" ColumnDefinitions="Auto,*,50">
+            <Label Text="修改密码" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#000000" FontFamily="DouyinSansBold"/>
+            <Entry Grid.Column="1" MaxLength="16" IsPassword="True" Text="tgwshwrhwh" IsEnabled="False" Margin="10,0" FontFamily="DouyinSansBold" Background="Transparent" BackgroundColor="Transparent" />
+            <Label Grid.Column="2" Text="点击修改" FontSize="12" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#AAA" FontFamily="DouyinSansBold"/>
+        </Grid>
+        <Button Grid.Row="8" Text="保存资料" FontFamily="DouyinSansBold" BackgroundColor="#7aadff" Margin="35,0,35,20" VerticalOptions="End"/>
+    </Grid>
+</ContentPage>

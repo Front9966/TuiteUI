@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.TextClassifyViewDome">
+    <!--重写RadioButton组件-->
+    <ContentView.Resources>
+        <Style TargetType="RadioButton" x:Key="TuiteRadioButton">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextColor" Value="#AAA"/>
+            <Setter Property="ControlTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Label FontFamily="DouyinSansBold" Margin="10,10" Text="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" TextColor="{TemplateBinding TextColor}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!--触发器-->
+            <Style.Triggers>
+                <Trigger TargetType="RadioButton" Property="IsChecked" Value="True">
+                    <Setter Property="FontSize" Value="17"/>
+                    <Setter Property="TextColor" Value="Orange"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentView.Resources>
+    <CollectionView ItemsLayout="HorizontalGrid,1" HorizontalOptions="Center" ItemsSource="{Binding textLbael_List}" Grid.Row="4" Margin="5,0,5,0">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <RadioButton VerticalOptions="Center" HorizontalOptions="Center" Content="{Binding Title}" Style="{StaticResource TuiteRadioButton}" IsChecked="{Binding IsChecked}">
+                    <RadioButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </RadioButton.GestureRecognizers>
+                </RadioButton>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

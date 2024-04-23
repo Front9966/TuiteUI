@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.SetPage"
+             Title="设置">
+    <VerticalStackLayout Margin="20,10">
+        <Frame Padding="10" CornerRadius="5" BackgroundColor="#F9F9F9" BorderColor="Transparent">
+            <VerticalStackLayout>
+                <Label Text="其它" FontFamily="DouyinSansBold" TextColor="#AAA" Margin="0,10"/>
+                <Grid ColumnDefinitions="*,30" Margin="10,15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="修改资料" FontSize="17" FontFamily="DouyinSansBold" TextColor="#000000"/>
+                    <Label Grid.Column="1" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" TextColor="#AAA" FontSize="18"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,30" Margin="10,15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="隐私政策" FontSize="17" FontFamily="DouyinSansBold" TextColor="#000000"/>
+                    <Label Grid.Column="1" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" TextColor="#AAA" FontSize="18"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+        <Frame Padding="10" Margin="0,20,0,0" CornerRadius="5" BackgroundColor="#F9F9F9" BorderColor="Transparent">
+            <VerticalStackLayout>
+                <Label Text="关于" FontFamily="DouyinSansBold" TextColor="#AAA" Margin="0,10"/>
+                <Grid ColumnDefinitions="*,30" Margin="10,15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="更新日志" FontSize="17" FontFamily="DouyinSansBold" TextColor="#000000"/>
+                    <Label Grid.Column="1" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" TextColor="#AAA" FontSize="18"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,30" Margin="10,15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="审核规则" FontSize="17" FontFamily="DouyinSansBold" TextColor="#000000"/>
+                    <Label Grid.Column="1" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" TextColor="#AAA" FontSize="18"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,100" Margin="10,15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="清理缓存" FontSize="17" FontFamily="DouyinSansBold" TextColor="#000000"/>
+                    <Label Grid.Column="1" HorizontalTextAlignment="End" Text="300M" FontFamily="DouyinSansBold" TextColor="#AAA" FontSize="15"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,30" Margin="10,15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_5"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="反馈中心" FontSize="17" FontFamily="DouyinSansBold" TextColor="#000000"/>
+                    <Label Grid.Column="1" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" TextColor="#AAA" FontSize="18"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,30" Margin="10,15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_6"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text="关于Tuite" FontSize="17" FontFamily="DouyinSansBold" TextColor="#000000"/>
+                    <Label Grid.Column="1" HorizontalTextAlignment="End" Text="&#xe60b;" FontFamily="iconfont" TextColor="#AAA" FontSize="18"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+        <Button Text="退出登录" Clicked="Button_Clicked" FontSize="18" Margin="0,20,0,0" FontFamily="DouyinSansBold" BackgroundColor="#7aadff" CornerRadius="5"/>
+    </VerticalStackLayout>
+</ContentPage>

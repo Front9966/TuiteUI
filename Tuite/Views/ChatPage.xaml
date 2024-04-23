@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:loca="clr-namespace:Tuite.ViewModels"
+             x:Class="Tuite.Views.ChatPage">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="MyChatLayout">
+            <Grid>
+                <Label Text="{Binding Message}" TextColor="#000000" FontFamily="DouyinSansBold" Margin="50,20,50,0" HorizontalOptions="End" BackgroundColor="#EEE" Padding="10"/>
+                    <Image Source="{Binding HeadImage}" WidthRequest="40" HeightRequest="40" HorizontalOptions="End">
+                    <Image.Clip>
+                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                    </Image.Clip>
+                </Image>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="YouChatLayout">
+            <Grid>
+                <Image Source="{Binding HeadImage}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start">
+                    <Image.Clip>
+                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                    </Image.Clip>
+                </Image>
+                <Label Text="{Binding Message}" TextColor="#000000" FontFamily="DouyinSansBold" Margin="50,20,50,0" HorizontalOptions="Start" BackgroundColor="#EEE" Padding="10"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="TimeDataLayout">
+            <Grid>
+                <Label Text="{Binding Time}" HorizontalOptions="Center"/>
+            </Grid>
+        </DataTemplate>
+        <loca:ChatPageModels x:Key="DataDome"
+                             MyChat="{StaticResource MyChatLayout}"
+                             YouChat="{StaticResource YouChatLayout}"
+                             TimeData="{StaticResource TimeDataLayout}"/>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,45" Margin="10,10,10,5">
+        <CollectionView x:Name="CollectionView1" Scrolled="CollectionView1_Scrolled" Grid.Row="0" ItemsSource="{Binding Chat}" ItemTemplate="{StaticResource DataDome}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+        <Grid Grid.Row="1" ColumnDefinitions="*,70">
+            <Frame Padding="0" BackgroundColor="#EEE" Margin="10,5" CornerRadius="1" BorderColor="Transparent">
+                <Entry FontFamily="DouyinSansBold" VerticalOptions="Center" MaxLength="200"/>
+            </Frame>
+            <Button Grid.Column="1" Margin="0,5" CornerRadius="1" Text="发送" TextColor="white" BackgroundColor="#7aadff" FontFamily="DouyinSansBold" Clicked="Button_Clicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

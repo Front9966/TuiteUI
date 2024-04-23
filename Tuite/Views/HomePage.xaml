@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.HomePage"
+             Title="我的">
+    <ScrollView>
+        <Grid RowDefinitions="150,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+            <!--头像部分-->
+            <Grid ColumnDefinitions="90,180,*">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped6"/>
+                </Grid.GestureRecognizers>
+                <Image Source="{Binding HeadShot}" Aspect="Fill" Margin="20,0,0,0" HeightRequest="60" WidthRequest="60">
+                    <Image.Clip>
+                        <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30"/>
+                    </Image.Clip>
+                </Image>
+                <VerticalStackLayout Grid.Column="1" HeightRequest="80" VerticalOptions="Center" Margin="15,0,0,0">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped6"/>
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Grid HeightRequest="40">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped6"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="{Binding Name}" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="17" FontFamily="DouyinSansBold"/>
+                    </Grid>
+                    <Grid HeightRequest="40">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped6"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="{Binding Sign}" LineBreakMode="TailTruncation" VerticalOptions="Center" TextColor="#AAA" FontSize="14" FontFamily="DouyinSansBold"/>
+                    </Grid>
+                </VerticalStackLayout>
+                <Label Text="&#xe60b;" FontFamily="iconfont" TextColor="#000000" Margin="0,0,20,0" FontSize="20" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End"/>
+            </Grid>
+            <!--信息栏部分-->
+            <Grid Grid.Row="1" Margin="20,0" ColumnDefinitions="*,*,*,*">
+                <VerticalStackLayout HeightRequest="50" Grid.Column="0">
+                    <Grid HeightRequest="25">
+                        <Label Text="{Binding Grade}" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="DouyinSansBold" TextColor="#289EE2" FontSize="16"/>
+                    </Grid>
+                    <Grid HeightRequest="25">
+                        <Label Text="等级" FontFamily="DouyinSansBold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontSize="14"/>
+                    </Grid>
+                </VerticalStackLayout>
+                <VerticalStackLayout HeightRequest="50" Grid.Column="1">
+                    <Grid HeightRequest="25">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped4"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="{Binding GuanZhu}" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="DouyinSansBold" TextColor="#289EE2" FontSize="16"/>
+                    </Grid>
+                    <Grid HeightRequest="25">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped4"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="关注" FontFamily="DouyinSansBold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontSize="14"/>
+                    </Grid>
+                </VerticalStackLayout>
+                <VerticalStackLayout HeightRequest="50" Grid.Column="2">
+                    <Grid HeightRequest="25">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped5"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="{Binding FenSi}" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="DouyinSansBold" TextColor="#289EE2" FontSize="16"/>
+                    </Grid>
+                    <Grid HeightRequest="25">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped5"/>
+                        </Grid.GestureRecognizers>
+                        <Label Text="粉丝" FontFamily="DouyinSansBold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontSize="14"/>
+                    </Grid>
+                </VerticalStackLayout>
+                <VerticalStackLayout HeightRequest="50" Grid.Column="3">
+                    <Grid HeightRequest="25">
+                        <Label Text="{Binding Day,StringFormat='{0}天'}" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="DouyinSansBold" TextColor="#289EE2" FontSize="16"/>
+                    </Grid>
+                    <Grid HeightRequest="25">
+                        <Label Text="注册" FontFamily="DouyinSansBold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#000000" FontSize="14"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+            <!--推荐图部分-->
+            <Grid ColumnDefinitions="*,*" Grid.Row="2" Margin="30,20,30,0">
+                <ImageButton Source="{Binding GG[0]}" HeightRequest="95" WidthRequest="130"/>
+                <ImageButton Source="{Binding GG[1]}" HeightRequest="95" WidthRequest="130" Grid.Column="1"/>
+            </Grid>
+            <!--我的功能部分-->
+            <Frame Grid.Row="3" Padding="8" Margin="30,10,30,0" BackgroundColor="#EEE" BorderColor="Transparent">
+                <HorizontalStackLayout Margin="30,0,0,0">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped3"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="home_post.png" HeightRequest="25" WidthRequest="25" Aspect="Fill"/>
+                    <Label Text="我的帖子" VerticalOptions="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="10,0,0,0"/>
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame Grid.Row="4" Padding="8" Margin="30,10,30,0" BackgroundColor="#EEE" BorderColor="Transparent">
+                <HorizontalStackLayout Margin="30,0,0,0">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped7"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="home_comments.png" HeightRequest="25" WidthRequest="25" Aspect="Fill"/>
+                    <Label Text="我的评论" VerticalOptions="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="10,0,0,0"/>
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame Grid.Row="5" Padding="8" Margin="30,10,30,0" BackgroundColor="#EEE" BorderColor="Transparent">
+                <HorizontalStackLayout Margin="30,0,0,0">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="home_collection.png" HeightRequest="25" WidthRequest="25" Aspect="Fill"/>
+                    <Label Text="我的收藏" VerticalOptions="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="10,0,0,0"/>
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame Grid.Row="6" Padding="8" Margin="30,10,30,0" BackgroundColor="#EEE" BorderColor="Transparent">
+                <HorizontalStackLayout Margin="30,0,0,0">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped1"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="home_history.png" HeightRequest="25" WidthRequest="25" Aspect="Fill"/>
+                    <Label Text="历史浏览" VerticalOptions="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="10,0,0,0"/>
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame Grid.Row="7" Padding="8" Margin="30,10,30,0" BackgroundColor="#EEE" BorderColor="Transparent">
+                <HorizontalStackLayout Margin="30,0,0,0">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped8"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Image Source="home_set.png" HeightRequest="25" WidthRequest="25" Aspect="Fill"/>
+                    <Label Text="设置" VerticalOptions="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="10,0,0,0"/>
+                </HorizontalStackLayout>
+            </Frame>
+            <Label Grid.Row="8" HorizontalTextAlignment="Center" Text="本平台由小豆团队开发&#xA;本APP已进行备案,请勿发布或进行任何违法行为&#xA;违者必究或移交公安机关处理并提交证据&#xA;工作室邮箱地址:7603871@qq.com" FontFamily="DouyinSansBold" Margin="0,20,0,0" TextColor="#AAA" HorizontalOptions="Center"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>

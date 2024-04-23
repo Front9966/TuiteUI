@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.SearchPage"
+             xmlns:local="clr-namespace:Tuite.Views"
+             xmlns:v="clr-namespace:Tuite.ViewModels"
+             BackgroundColor="white">
+    <Grid RowDefinitions="70,Auto,Auto,Auto,*">
+        <!--搜索框-->
+        <Frame Margin="20,10" CornerRadius="15" Padding="0" BorderColor="Transparent" BackgroundColor="#EEE">
+            <Grid ColumnDefinitions="Auto,*" Margin="15,0,5,0" VerticalOptions="Center">
+                <Label Text="&#xe61b;" FontFamily="iconfont" TextColor="#AAA" FontSize="15" VerticalOptions="Center"/>
+                <Entry ReturnType="Go" x:Name="entry" Completed="Entry_Completed" Grid.Column="1" Margin="10,0,15,0" HorizontalTextAlignment="Start" FontFamily="DouyinSansBold" FontSize="15" TextColor="#000000" Placeholder="想搜索点什么呢？" PlaceholderColor="#AAA"/>
+            </Grid>
+        </Frame>
+        <!--搜索记录-->
+        <Grid Grid.Row="1" HorizontalOptions="Center" Opacity="0.4">
+            <CollectionView ItemsLayout="HorizontalGrid,1" ItemsSource="{Binding Bw}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="5" Margin="5,0,0,0" BorderColor="Transparent" BackgroundColor="#AAA">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding}" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <!--文本标签分类-->
+        <Grid Grid.Row="2">
+            <local:TextClassifyViewDome x:Name="textClassifyButton"/>
+        </Grid>
+        <!--分线-->
+        <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="5" Grid.Row="3"/>
+        <!--分类框-->
+        <ScrollView x:Name="ScrollView1" Grid.Row="4" VerticalScrollBarVisibility="Never" Margin="0,10,0,0">
+            <VerticalStackLayout x:Name="VerticalStackLayout1"/>
+        </ScrollView>
+    </Grid>
+</ContentPage>

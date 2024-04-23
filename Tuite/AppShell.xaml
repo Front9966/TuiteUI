@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Tuite.Views"
+       xmlns:load="clr-namespace:Tuite"
+       xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+       android:TabbedPage.ToolbarPlacement="Bottom"
+       SelectedTabColor="#000000"
+       UnselectedTabColor="#AAA"
+       x:Class="Tuite.AppShell">
+    <views:FirstPage Title="首页">
+        <views:FirstPage.IconImageSource>
+            <FileImageSource File="first_icon.png"/>
+        </views:FirstPage.IconImageSource>
+    </views:FirstPage>
+    <views:ClassifyPage Title="分类">
+        <views:ClassifyPage.IconImageSource>
+            <FileImageSource File="classify_icon.png"/>
+        </views:ClassifyPage.IconImageSource>
+    </views:ClassifyPage>
+    <views:MessagePage Title="消息">
+        <views:MessagePage.IconImageSource>
+            <FileImageSource File="message_icon.png"/>
+        </views:MessagePage.IconImageSource>
+    </views:MessagePage>
+    <views:HomePage Title="我的">
+        <views:HomePage.IconImageSource>
+            <FileImageSource File="home_icon.png"/>
+        </views:HomePage.IconImageSource>
+    </views:HomePage>
+</TabbedPage>

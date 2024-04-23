@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.UserListViewDome">
+    <CollectionView ItemsSource="{Binding UserListinfo_List}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid ColumnDefinitions="Auto,150,*">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Grid.GestureRecognizers>
+                    <Image Source="{Binding UserImge}" HeightRequest="60" WidthRequest="60" Margin="10,3">
+                        <Image.Clip>
+                            <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30"/>
+                        </Image.Clip>
+                    </Image>
+                    <VerticalStackLayout Grid.Column="1" HeightRequest="60" VerticalOptions="Center">
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </VerticalStackLayout.GestureRecognizers>
+                        <Label Text="{Binding UserName}" LineBreakMode="TailTruncation" FontSize="16" HeightRequest="30" VerticalTextAlignment="Center" FontFamily="DouyinSansBold"/>
+                        <Label Text="{Binding UserSign}" TextColor="#AAA" HeightRequest="30" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" FontSize="13" FontFamily="DouyinSansBold"/>
+                    </VerticalStackLayout>
+                    <Grid Grid.Column="2" HorizontalOptions="End">
+                        <Frame Margin="0,0,20,0" CornerRadius="5" Padding="0" HeightRequest="25" WidthRequest="40" BorderColor="Transparent" BackgroundColor="#E7E9E7" HorizontalOptions="End">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding Status}" FontFamily="DouyinSansBold" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.PostContentPage">
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="5"/>
+                <Grid Grid.Row="1" Margin="0,6,0,0" ColumnDefinitions="Auto,160,*">
+                    <Image Grid.Column="0" Margin="15,0,0,0" Source="{Binding postinfo.HeadImage}" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50" Aspect="Fill">
+                        <Image.Clip>
+                            <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                        </Image.Clip>
+                    </Image>
+                    <VerticalStackLayout Grid.Column="1" HeightRequest="45" Margin="10,0,0,0">
+                        <Label Text="{Binding postinfo.Name}" LineBreakMode="TailTruncation" FontFamily="DouyinSansBold" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label Text="{Binding postinfo.LastUpdated}" TextColor="#AAA" LineBreakMode="TailTruncation" FontFamily="DouyinSansBold" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                    <Grid Grid.Column="2">
+                        <Frame Margin="0,0,20,0" CornerRadius="5" Padding="0" HeightRequest="25" WidthRequest="40" BorderColor="Transparent" Background="#E7E9E7" HorizontalOptions="End">
+                            <Label Text="{Binding postinfo.Status}" FontFamily="DouyinSansBold" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </Grid>
+                </Grid>
+                <Label Text="{Binding postinfo.Title}" FontFamily="DouyinSansBold" Grid.Row="2" Margin="10,10,10,0" FontSize="20"/>
+                <Label Text="{Binding postinfo.Content}" FontFamily="DouyinSansBold" Grid.Row="3" Margin="10,10,10,0" FontSize="15"/>
+                <CollectionView Grid.Row="4" ItemsSource="{Binding postinfo.Image}" Margin="0,20,0,0">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="15,0">
+                                <Image Source="{Binding}" Aspect="Fill"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <HorizontalStackLayout Grid.Row="5" HorizontalOptions="Center" Margin="0,20">
+                    <VerticalStackLayout Margin="5,0,5,0">
+                        <Label Text="&#xe651;" FontFamily="iconfont" FontSize="20" TextColor="#AAA" Margin="10,0"/>
+                        <Label Text="{Binding postinfo.GoodNum,StringFormat='( {0} )'}" HorizontalTextAlignment="Center" FontFamily="DouyinSansBold" FontSize="15" TextColor="#1EBFFF" Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Margin="5,0,5,0">
+                        <Label Text="&#xe602;" FontFamily="iconfont" FontSize="20" TextColor="#AAA" Margin="10,0"/>
+                        <Label Text="{Binding postinfo.ShouNum,StringFormat='( {0} )'}" TextColor="#1EBFFF" HorizontalTextAlignment="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Margin="5,0,5,0">
+                        <Label Text="&#xe7c5;" FontFamily="iconfont1" FontSize="19" TextColor="#AAA" Margin="10,0"/>
+                        <Label Text="分享" TextColor="#1EBFFF" HorizontalTextAlignment="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Margin="5,0,5,0">
+                        <Label Text="&#xe7ea;" FontFamily="iconfont1" FontSize="20" TextColor="#AAA" Margin="10,0"/>
+                        <Label Text="删除" TextColor="#1EBFFF" HorizontalTextAlignment="Center" FontFamily="DouyinSansBold" FontSize="15" Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="6"/>
+                <Label Grid.Row="7" Text="评论" FontFamily="DouyinSansBold" FontSize="15" Margin="20,0"/>
+                <CollectionView Grid.Row="8" ItemsSource="{Binding commentinfo}" Margin="0,20,0,0">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                           ItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+                                <Grid Grid.Row="0" Margin="0,10">
+                                    <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="1"/>
+                                </Grid>
+                                <Grid Grid.Row="1" ColumnDefinitions="Auto,*,60">
+                                    <Image Grid.Column="0" Margin="20,0,0,0" Source="{Binding UserImage}" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="40" WidthRequest="40" Aspect="Fill">
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <VerticalStackLayout Grid.Column="1" HeightRequest="45" Margin="10,0,0,0">
+                                        <Label Text="{Binding UserName}" LineBreakMode="TailTruncation" FontFamily="DouyinSansBold" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding Time}" TextColor="#AAA" LineBreakMode="TailTruncation" FontFamily="DouyinSansBold" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                    </VerticalStackLayout>
+                                    <Button Grid.Column="2" Text="#" FontFamily="iconfont" FontSize="15" BackgroundColor="Transparent" TextColor="#000000"/>
+                                </Grid>
+                                <Label Text="{Binding Content}" Grid.Row="2" FontSize="13" FontFamily="DouyinSansBold" Margin="60,10,0,0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ScrollView>
+        <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="35" VerticalOptions="End" Grid.Row="1" Margin="0,10">
+            <Frame Padding="0" BorderColor="Transparent" WidthRequest="200" Margin="0,0,5,0" CornerRadius="1">
+                <Entry HorizontalTextAlignment="Center" FontSize="12" FontFamily="DouyinSansBold" VerticalTextAlignment="Center" MaxLength="500" Placeholder="说说你的想法" PlaceholderColor="#AAA" BackgroundColor="#EEE"/>
+            </Frame>
+            <Button Text="回复" FontSize="13" CornerRadius="1" FontFamily="DouyinSansBold" BackgroundColor="#7aadff"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.PostInfoViewDome">
+    <CollectionView ItemsSource="{Binding postInfo_List}" RemainingItemsThreshold="5" RemainingItemsThresholdReached="CollectionView_RemainingItemsThresholdReached">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="5"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </VerticalStackLayout.GestureRecognizers>
+                    <!--头像栏-->
+                    <Grid ColumnDefinitions="Auto,160,*">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Tapped"/>
+                        </Grid.GestureRecognizers>
+                        <Image Grid.Column="0" Margin="15,0,0,0" Source="{Binding HeadImage}" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="35" WidthRequest="35" Aspect="Fill">
+                            <Image.Clip>
+                                <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
+                            </Image.Clip>
+                        </Image>
+                        <VerticalStackLayout Grid.Column="1" HeightRequest="45" Margin="10,0,0,0">
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Tapped"/>
+                            </VerticalStackLayout.GestureRecognizers>
+                            <Label Text="{Binding Name}" LineBreakMode="TailTruncation" FontFamily="DouyinSansBold" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Text="{Binding LastUpdated}" TextColor="#AAA" LineBreakMode="TailTruncation" FontFamily="DouyinSansBold" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <Grid Grid.Column="2">
+                            <Frame Margin="0,0,20,0" CornerRadius="5" Padding="0" HeightRequest="25" WidthRequest="40" BorderColor="Transparent" Background="#E7E9E7" HorizontalOptions="End">
+                                <Label Text="{Binding Status}" FontFamily="DouyinSansBold" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                            </Frame>
+                        </Grid>
+                    </Grid>
+                    <!--内容栏-->
+                    <Label Text="{Binding Title}" FontFamily="DouyinSansBold" Margin="15,0,0,0" FontSize="18" FontAttributes="Bold" LineBreakMode="TailTruncation"/>
+                    <Label Text="{Binding Content}" FontFamily="DouyinSansBold" FontSize="15" FontAttributes="None" TextColor="#AAA" Margin="15,0,15,0" MaxLines="4"/>
+                    <!--图片-->
+                    <CollectionView Margin="15,0,0,0" ItemsLayout="HorizontalGrid" ItemsSource="{Binding Image}">
+                        <CollectionView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </CollectionView.GestureRecognizers>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Image Margin="2,0,0,0" Source="{Binding}" Aspect="Fill" HeightRequest="80">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!--帖子点赞量-->
+                    <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*" Margin="30,10">
+                        <Label Text="&#xe651;" TextColor="#3B90E3" FontSize="15" FontFamily="iconfont"/>
+                        <Label Text="{Binding GoodNum}" Margin="5,0,0,0" FontFamily="DouyinSansBold" FontSize="15" Grid.Column="1"/>
+                        <Label Text="&#xe602;" TextColor="#3B90E3" FontSize="15" FontFamily="iconfont" Margin="35,0,0,0" Grid.Column="2"/>
+                        <Label Text="{Binding ShouNum}" Margin="5,0,0,0" FontFamily="DouyinSansBold" FontSize="15" Grid.Column="3"/>
+                        <Grid Margin="0,0,30,0" ColumnDefinitions="Auto,Auto" HorizontalOptions="End" Grid.Column="4">
+                            <Label Text="&#xe650;" TextColor="#3B90E3" FontFamily="iconfont" FontSize="15"/>
+                            <Label Text="{Binding LookNum}" Margin="5,0,0,0" FontFamily="DouyinSansBold" FontSize="15" Grid.Column="1"/>
+                        </Grid>
+                    </Grid>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

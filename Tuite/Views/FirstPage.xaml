@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:kit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Tuite.Views.FirstPage"
+             xmlns:local="clr-namespace:Tuite.Views"
+             Title="首页">
+    <!--状态栏颜色更改-->
+    <ContentPage.Behaviors>
+        <kit:StatusBarBehavior StatusBarColor="#fff" StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid x:Name="Grid1" RowSpacing="0" RowDefinitions="30,Auto,35,Auto,Auto,Auto,Auto">
+            <!--搜索栏-->
+            <Frame Padding="0" BackgroundColor="#DDD" CornerRadius="9" Margin="10,0" BorderColor="Transparent" Grid.Row="0">
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tap_Tapped"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Label Text="&#xe61b;" FontFamily="iconfont" FontSize="15" TextColor="#AAA"/>
+                    <Label Text="请输入关键词" FontFamily="DouyinSansBold" FontSize="14" TextColor="#AAA"/>
+                </HorizontalStackLayout>
+            </Frame>
+            <!--轮播图-->
+            <CarouselView x:Name="Ad_CarouselView" ItemsSource="{Binding ad_List}" Grid.Row="1" HeightRequest="150">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame Padding="0" Margin="10,10,10,0" BorderColor="Transparent" CornerRadius="10" HasShadow="True">
+                                <ImageButton Source="{Binding Image}" Aspect="Fill" Clicked="ImageButton_Clicked"/>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <!--通知栏-->
+            <Frame Padding="0" Margin="10,10,10,0" Grid.Row="2" BorderColor="Transparent" BackgroundColor="#EEE">
+                <Grid>
+                    <Label Text="&#xe605;" FontFamily="iconfont" TextColor="orange" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,0,0"/>
+                    <Label Text="今天没有任何通知今天没有任何通知今天没有任何通知今天没有任何通知" FontFamily="DouyinSansBold" TextColor="#AAA" MaxLines="1" LineBreakMode="TailTruncation" VerticalOptions="Center" HorizontalOptions="Start" Margin="30,0,0,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Frame>
+            <!--板块-->
+            <CollectionView ItemsSource="{Binding classify_List}" HeightRequest="75" Grid.Row="3" Margin="0,10,0,10" HorizontalOptions="Center" VerticalOptions="Center" ItemsLayout="HorizontalGrid,1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="50,30" WidthRequest="80">
+                            <ImageButton Clicked="ImageButton_Clicked_1" CornerRadius="7" Source="{Binding Image}" WidthRequest="50" HeightRequest="50" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Title}" FontFamily="DouyinSansBold" TextColor="#AAA" FontSize="13" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--分界线-->
+            <Line Grid.Row="4" X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="5"/>
+            <!--子分类主题-->
+            <Grid x:Name="Grid2" Grid.Row="4" Margin="0,5,0,0">
+                <local:TextClassifyViewDome x:Name="textClassifyViewDome"/>
+            </Grid>
+            <!--帖子-->
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding RefreshCommand}"
+                         Grid.Row="5"
+                         x:Name="RefreshView1"
+                         Margin="0,15,0,0">
+                <local:PostInfoViewDome x:Name="postInfoViewDome"/>
+            </RefreshView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

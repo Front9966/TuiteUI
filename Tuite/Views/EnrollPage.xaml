@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.EnrollPage">
+    <Grid>
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Frame Padding="0" WidthRequest="270" HeightRequest="40" BackgroundColor="#EEE" BorderColor="Transparent" Margin="0,20,0,0" Grid.Row="1">
+                <Grid VerticalOptions="Center" Margin="15,0" ColumnDefinitions="Auto,*">
+                    <Label Text="&#xe609;" FontFamily="iconfont1" FontSize="15" TextColor="#AAA" VerticalOptions="Center"/>
+                    <Entry MaxLength="10" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="15" FontFamily="DouyinSansBold" TextColor="#000000" Placeholder="请输入您的昵称" PlaceholderColor="#AAA"/>
+                </Grid>
+            </Frame>
+            <Frame Padding="0" WidthRequest="270" HeightRequest="40" BackgroundColor="#EEE" BorderColor="Transparent" Margin="0,20,0,0" Grid.Row="1">
+                <Grid VerticalOptions="Center" Margin="15,0" ColumnDefinitions="Auto,*">
+                    <Label Text="&#xe615;" FontFamily="iconfont1" FontSize="15" TextColor="#AAA" VerticalOptions="Center"/>
+                    <Entry MaxLength="11" Keyboard="Telephone" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="15" FontFamily="DouyinSansBold" TextColor="#000000" Placeholder="请输入手机号码" PlaceholderColor="#AAA"/>
+                </Grid>
+            </Frame>
+            <Frame Padding="0" WidthRequest="270" HeightRequest="40" BackgroundColor="#EEE" BorderColor="Transparent" Margin="0,20,0,0" Grid.Row="1">
+                <Grid VerticalOptions="Center" Margin="15,0" ColumnDefinitions="Auto,*,100">
+                    <Label Text="&#xe6ba;" FontFamily="iconfont1" FontSize="15" TextColor="#AAA" VerticalOptions="Center"/>
+                    <Entry MaxLength="6" Keyboard="Numeric" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="15" FontFamily="DouyinSansBold" TextColor="#000000" Placeholder="六位验证码" PlaceholderColor="#AAA"/>
+                    <Button Margin="5,5,0,5" Text="获取验证码" Padding="0" CornerRadius="4" TextColor="White" BackgroundColor="#7aadff" FontFamily="DouyinSansBold" Grid.Column="2"/>
+                </Grid>
+            </Frame>
+            <Frame Padding="0" WidthRequest="270" HeightRequest="40" BackgroundColor="#EEE" BorderColor="Transparent" Margin="0,20,0,0" Grid.Row="1">
+                <Grid VerticalOptions="Center" Margin="15,0" ColumnDefinitions="Auto,*">
+                    <Label Text="&#xf0109;" FontFamily="iconfont1" FontSize="15" TextColor="#AAA" VerticalOptions="Center"/>
+                    <Entry MaxLength="16" IsPassword="True" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="15" FontFamily="DouyinSansBold" TextColor="#000000" Placeholder="请输入密码" PlaceholderColor="#AAA"/>
+                </Grid>
+            </Frame>
+            <Button BackgroundColor="#7aadff" Text="注册" FontSize="15" FontFamily="DouyinSansBold" Margin="10,20" CornerRadius="5"/>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="忘记账号？请尝试点击" TextColor="#AAA" FontSize="13" FontFamily="DouyinSansBold" Margin="0,0,10,0"/>
+                <Label Text="忘记密码" TextColor="#7aadff" FontSize="13" FontFamily="DouyinSansBold"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <HorizontalStackLayout Margin="0,0,0,20" HorizontalOptions="Center" VerticalOptions="End">
+            <Label Text="注册代表您已同意《" FontSize="12" TextColor="#AAA" HorizontalOptions="Center"/>
+            <Label Text="隐私政策" FontSize="12" TextColor="#7aadff" HorizontalOptions="Center"/>
+            <Label Text="》本App使用条款协议" FontSize="12" TextColor="#AAA" HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

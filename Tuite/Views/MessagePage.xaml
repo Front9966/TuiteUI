@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.MessagePage"
+             Title="消息">
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <CollectionView ItemsSource="{Binding message_List}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="1"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem Text="删除" BackgroundColor="red" Invoked="SwipeItem_Invoked"/>
+                        </SwipeView.RightItems>
+                        <Grid ColumnDefinitions="auto,auto,*" Margin="10,10,0,0">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Grid.GestureRecognizers>
+                            <Image Source="{Binding Image}" Aspect="Fill" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                                </Image.Clip>
+                            </Image>
+                            <Grid Grid.Column="1" RowDefinitions="25,25">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Grid.GestureRecognizers>
+                                <Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="16" FontFamily="DouyinSansBold" Margin="10,0,0,0"/>
+                                <Label Text="{Binding Msg}" HorizontalOptions="Start" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#AAA" FontSize="13" FontFamily="DouyinSansBold" Margin="10,10,0,0" Grid.Row="1"/>
+                            </Grid>
+                            <Grid Grid.Column="2" HorizontalOptions="End" Margin="0,0,10,0" RowDefinitions="25,25">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Grid.GestureRecognizers>
+                                <Label Text="{Binding Time}" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#AAA" FontSize="10" FontFamily="DouyinSansBold"/>
+                                <Label Text="{Binding MsgNumber,StringFormat='{0}条消息未读'}" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="TailTruncation" TextColor="#AAA" FontSize="10" FontFamily="DouyinSansBold" Grid.Row="1"/>
+                            </Grid>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>

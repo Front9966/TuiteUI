@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tuite.Views"
+             x:Class="Tuite.Views.ClassifyPage"
+             Title="交流板块">
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                <!--板块信息-->
+                <CollectionView x:Name="CollectionView1" Margin="0,0,0,10" ItemsLayout="VerticalGrid,5" ItemsSource="{Binding classifyInfos_List}" Grid.Row="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Margin="0,10,0,0">
+                                <VerticalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </VerticalStackLayout.GestureRecognizers>
+                                <Image BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" Source="{Binding Image}" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                    </Image.Clip>
+                                </Image>
+                                <Label Text="{Binding Name}" TextColor="#000" FontFamily="DouyinSansBold" Margin="0,5,0,0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Label Text="{Binding ReplyNum,StringFormat='回复:{0}'}" FontSize="8" TextColor="#AAA" FontFamily="DouyinSansBold" Margin="0,5,0,0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--分割线-->
+                <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="1" Grid.Row="1"/>
+                <!--板块内容-->
+                <VerticalStackLayout Grid.Row="2" >
+                    <!--板块标题信息-->
+                    <Grid ColumnDefinitions="Auto,Auto,*" Margin="15,10,10,10">
+                        <Image Grid.Column="0" Source="test2.jpg" HeightRequest="60" WidthRequest="60">
+                            <Image.Clip>
+                                <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30"/>
+                            </Image.Clip>
+                        </Image>
+                        <VerticalStackLayout Grid.Column="1" Margin="20,0,0,0" HeightRequest="80">
+                            <Label Text="测试板块" FontFamily="DouyinSansBold" Margin="0,10,0,0" HeightRequest="20" FontAttributes="Bold" FontSize="19" VerticalOptions="Center"/>
+                            <Label Text="帖子:100" FontFamily="DouyinSansBold" Margin="0,10,0,0" TextColor="#aaa" FontAttributes="Bold" FontSize="15" VerticalOptions="Center"/>
+                            <HorizontalStackLayout>
+                                <Label Text="板主:" FontFamily="DouyinSansBold" Margin="0,2,0,0" TextColor="#aaa" FontAttributes="Bold" FontSize="15" VerticalOptions="Center"/>
+                                <CollectionView ItemsSource="{Binding adminInfo_List}">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Horizontal"/>
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding Image}" Margin="2,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" Aspect="Fill" HeightRequest="20" WidthRequest="20">
+                                                <Image.Clip>
+                                                    <EllipseGeometry Center="10,10" RadiusX="10" RadiusY="10"/>
+                                                </Image.Clip>
+                                            </Image>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="End" Margin="0,0,10,0">
+                            <Frame x:Name="Manage_Button" Padding="0" BorderColor="Transparent" BackgroundColor="#7aadff" HeightRequest="30" WidthRequest="70" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Manage_Button_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Label FontFamily="DouyinSansBold" FontSize="15" Text="管理" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Frame x:Name="Add_Button" Padding="0" BorderColor="Transparent" BackgroundColor="#7aadff" HeightRequest="30" WidthRequest="70" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Add_Button_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Label FontFamily="DouyinSansBold" FontSize="15" Text="加入" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Frame x:Name="AddPost_Button" Padding="0" BorderColor="Transparent" BackgroundColor="#7aadff" HeightRequest="30" WidthRequest="70" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddPost_Button_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Label FontFamily="DouyinSansBold" FontSize="15" Text="发布" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </Grid>
+                    <!--分割线-->
+                    <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="1"/>
+                    <!--板块通知信息-->
+                    <CollectionView ItemsSource="{Binding community_Notifications_List}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="15,10,0,0">
+                                    <Grid>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                                        </Grid.GestureRecognizers>
+                                    </Grid>
+                                    <Frame Padding="0" WidthRequest="50" HorizontalOptions="Start" BorderColor="Transparent" BackgroundColor="orange">
+                                        <Label Text="通知" Margin="10,0,0,0" FontFamily="DouyinSansBold" FontSize="15" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    </Frame>
+                                    <Label Text="{Binding Title}" Margin="55,0,0,0" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="DouyinSansBold" FontSize="15"/>
+                                    <Label Text="&#xe60b;" FontFamily="iconfont" Margin="0,0,10,0" HorizontalOptions="End" VerticalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Grid Margin="0,10,0,0">
+                        <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="#EEE" StrokeThickness="1"/>
+                    </Grid>
+                </VerticalStackLayout>
+                <!--标签分类-->
+                <Grid Grid.Row="3">
+                    <local:TextClassifyViewDome x:Name="textClassifyViewDome"/>
+                </Grid>
+                <!--帖子内容-->
+                <Grid Grid.Row="4">
+                    <local:PostInfoViewDome x:Name="postInfoViewDome"/>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

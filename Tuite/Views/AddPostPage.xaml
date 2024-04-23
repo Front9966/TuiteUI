@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tuite.Views.AddPostPage">
+    <Grid RowDefinitions="*,55">
+        <Grid Margin="15,0" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+            <Label Text="内容标题" FontSize="18" TextColor="#AAA" FontFamily="DouyinSansBold" Margin="0,10"/>
+            <Entry Grid.Row="1" BackgroundColor="#EEE"/>
+            <Label Grid.Row="2" Text="内容" FontSize="18" TextColor="#AAA" FontFamily="DouyinSansBold" Margin="0,10"/>
+            <Editor Grid.Row="3" MaxLength="500" VerticalTextAlignment="Start" BackgroundColor="#EEE" HeightRequest="200"/>
+            <CollectionView Grid.Row="4" Margin="10,10,10,0" ItemsSource="{Binding Image}" ItemsLayout="HorizontalGrid,1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Aspect="AspectFit" WidthRequest="75"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <Button Grid.Row="1" Text="发布" Clicked="Button_Clicked" Padding="0" FontFamily="DouyinSansBold" VerticalOptions="End" BackgroundColor="#7aadff" CornerRadius="10" Margin="10,10"/>
+    </Grid>
+</ContentPage>
